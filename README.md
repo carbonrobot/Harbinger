@@ -26,6 +26,9 @@ POST /error
 
 POST /fatal
 { "server": "GH823773", "application": "UnicornMaker", "message": "Creating unicorn 3365", "exception": "Run away!" }
+
+POST /ANY_CUSTOM_LOGLEVEL_NAME_YOU_WANT
+{ "server": "GH823773", "application": "UnicornMaker", "message": "Creating unicorn 3365", "exception": "I'm a REAL BOY!" }
 ```
 
 #### Reporting
