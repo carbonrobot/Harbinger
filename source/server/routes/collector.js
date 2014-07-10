@@ -10,7 +10,6 @@ router.post('/:type', function (req, res) {
 
         // no callback, fire and forget
         db.collection('logs').insert({
-            created: +Date.now(),
             type: req.params.type,
             app: req.body.app,
             machine: req.body.machine,

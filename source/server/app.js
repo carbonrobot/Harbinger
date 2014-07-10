@@ -1,18 +1,26 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('static-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express = require('express'),
+    path = require('path'),
+    favicon = require('static-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    exphbs = require('express3-handlebars')
+    moment = require('moment');
 
-var routes = require('./routes/index');
-var collector = require('./routes/collector');
-
-var app = express();
+var routes = require('./routes/index'),
+    collector = require('./routes/collector');
 
 // view engine setup
+var app = express();
+app.engine('handlebars', exphbs({
+    helpers: {
+        timestamp: function (id) {
+            return moment(id.getTimestamp()).format('YYYY-MM-DD h:mm:ss a');
+        }
+    }
+}));
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
+app.set('view engine', 'handlebars');
 
 app.use(favicon());
 app.use(logger('dev'));

@@ -8,8 +8,10 @@ router.get('/', function(req, res) {
         if (err) { return console.dir(err); }
 
         // no callback, fire and forget
-        db.collection('logs').find().toArray(function (err, l) {
-            res.render('index', { logs: l });
+        db.collection('logs').find().sort({ _id: -1 }).toArray(function (err, l) {
+            res.render('index', {
+                logs: l
+            });
 
             db.close();
         });
