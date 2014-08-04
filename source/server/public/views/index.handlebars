@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Harbinger</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Harbinger</h1>
+    <p>Infamous Collector, herald of warnings, bringer of doom.</p>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#logs}}
+                <tr>
+                    <td>{{timestamp _id}}</td>
+                    <td>{{app}}</td>
+                    <td>{{machine}}</td>
+                    <td>{{type}}</td>
+                    <td>{{message}}</td>
+                </tr>
+                {{/logs}}
+            </tbody>
+        </table>
+    </div>
+  </body>
+</html>
