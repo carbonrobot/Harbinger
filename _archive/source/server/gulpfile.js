@@ -2,6 +2,7 @@
 var less = require('gulp-less');
 var nodemon = require('gulp-nodemon');
 
+// TODO: get these paths from the config files
 var paths = {
     serverViews: ['app/views/**/*.*'], 
     serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],

@@ -7,6 +7,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 846,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -19,7 +27,7 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -32,6 +40,14 @@
 	},
 	"file_history":
 	[
+		"/C/Users/CXBrown/Projects/Carbonrobot/harbinger/source/server/app/views/layout.server.view.html",
+		"/C/Users/CXBrown/Projects/Carbonrobot/harbinger/source/server/app/views/index.server.view.html",
+		"/C/Users/CXBrown/Projects/Carbonrobot/harbinger/source/server/config/env/test.js",
+		"/C/Users/CXBrown/Projects/Carbonrobot/harbinger/source/server/config/express.js",
+		"/C/Users/CXBrown/Projects/Carbonrobot/harbinger/source/server/package.json",
+		"/C/Users/CXBrown/Projects/Carbonrobot/harbinger/source/server/gulpfile.js",
+		"/C/Users/CXBrown/Projects/Carbonrobot/harbinger/source/server/app_old.js",
+		"/C/Users/CXBrown/Projects/Carbonrobot/harbinger/source/server/bower.json"
 	],
 	"find":
 	{
@@ -68,6 +84,34 @@
 		{
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "gulpfile.js",
+					"settings":
+					{
+						"buffer_size": 846,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -77,7 +121,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -127,6 +171,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 206.0,
 	"status_bar_visible": true
 }
