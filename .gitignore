@@ -1,4 +1,3 @@
-.sublime-project
-.sublime-workspace
-.csproj
-.sln
+*.sublime-*
+*.csproj
+*.sln
