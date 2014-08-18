@@ -3,6 +3,24 @@ Harbinger
 
 Infamous Collector, herald of warnings, bringer of doom.
 
+## Development
+
+#### Prerequisites
+
+- Npm (latest)
+- Node (latest)
+- Mongodb (latest)
+- Bower `npm install -g bower`
+- Karma `npm install -g karma karma-cli`
+
+#### Application
+
+- Clone the repository
+- From the "source" directory, `npm install` in console to d/l the js packages
+- In a separate console window, run an instance of Mongodb
+	- mongod --dbpath c:\\temp\\harbinger-db
+- In the harbinger console window, `npm start` to run the application on port 3000
+
 ## Usage
 
 REST based application level logging.
