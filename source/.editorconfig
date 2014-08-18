@@ -15,8 +15,8 @@ insert_final_newline = true
 [**.js, **.json]
 trim_trailing_whitespace = true
 indent_style = space
-indent_size = 2
-max_line_length = 80
+indent_size = 4
+max_line_length = 120
 quote_type = single
 curly_bracket_next_line = false
 spaces_around_operators = true
@@ -32,7 +32,7 @@ codepaint = false
 [**.yml, **.html, **.css]
 trim_trailing_whitespace = true
 indent_style = space
-indent_size = 2
+indent_size = 4
 
 # No standard.  Please document a standard if different from .js
 [**.md]
