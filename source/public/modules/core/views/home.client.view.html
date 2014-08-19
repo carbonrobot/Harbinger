@@ -1,22 +1,29 @@
 <section data-ng-controller="HomeController">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-8"></div>
-			<div class="col-sm-12 col-md-4">
-				<form class="form crush">
-					<div class="form-group">
-						<div class="input-group">
-      						<div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-							<input type="text" class="form-control" data-ng-model="search" />
-						</div>
-					</div>
-				</form>
-			</div>
+	
+	<header class="navbar navbar-default-white navbar-fixed-top" role="navigation">
+ 		<div class="navbar-header">
+			<div class="brand">
+				<a href="index.html" class="logo">
+	                <img src="modules/core/img/brand/logo.png" alt="">
+	            </a>
+	        </div>
 		</div>
+	 	<div class="container-fluid">
+	 		<form class="navbar-form pull-right">
+				<div class="form-group">
+					<div class="input-group">
+  						<div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+						<input type="text" class="form-control" data-ng-model="search" />
+					</div>
+				</div>
+			</form>
+	 	</div>
+ 	</header>
+
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12">
 				<section class="panel panel-default">
-					<header class="panel-heading">Application Log</header>
 					<div class="panel-body">
 						<table class="table">
 							<thead>
@@ -43,4 +50,5 @@
 			</div>
 		</div>
 	</div>
+
 </section>
