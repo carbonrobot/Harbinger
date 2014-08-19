@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 exports.index = function(req, res) {
-	res.render('index', {
+	res.render('layout', {
 		user: req.user || null
 	});
 };

@@ -23,12 +23,20 @@
 	<![endif]-->
 </head>
 
-<body class="ng-cloak">
-	<section class="content">
-		<section class="container">
-			<section data-ui-view></section>
-		</section>
-	</section>
+<body>
+	<header class="header fixed-top">
+		<div class="navbar-header">
+			<div class="brand">
+				<a href="index.html" class="logo">
+	                <img src="modules/core/img/brand/logo.png" alt="">
+	            </a>
+	        </div>
+		</div>
+	</header>
+	
+	<main class="content ng-cloak">
+		<div data-ui-view></div>
+	</main>
 
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>

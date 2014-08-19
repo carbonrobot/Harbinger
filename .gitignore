@@ -1,3 +1,12 @@
+.DS_Store
+.nodemonignore
+.sass-cache/
+npm-debug.log
+source/node_modules/
+source/public/lib/angular*
+source/public/lib/bootstrap
+source/public/lib/jquery
+source/app/tests/coverage/
 *.sublime-*
 *.csproj
 *.sln
