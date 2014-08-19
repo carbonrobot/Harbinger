@@ -18,7 +18,7 @@
 					<tbody>
 						<tr data-ng-repeat="msg in messages">
 							<td>{{msg.created | date : 'yyyy-MM-dd H:mm:ss:sss'}}</td>
-							<td>{{msg.level}}</td>
+							<td><level value="{{msg.level}}" /></td>
 							<td>{{msg.app}}</td>
 							<td>{{msg.machine}}</td>
 							<td>{{msg.content}}</td>

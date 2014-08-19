@@ -24,6 +24,19 @@ ul li {
     /*list-style:none;*/
 }
 
+.label-msg-debug, .label-msg-trace {
+  background-color: #777;
+}
+.label-msg-info {
+  background-color: #5bc0de;
+}
+.label-msg-warn {
+  background-color: #f0ad4e;
+}
+.label-msg-error, .label-msg-fatal {
+  background-color: #d9534f;
+}
+
 a,a:hover,a:focus {
     text-decoration:none;
     outline:none;
