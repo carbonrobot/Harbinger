@@ -1,31 +1,44 @@
 <section data-ng-controller="HomeController">
 	<div class="container-fluid">
 		<div class="row">
+			<div class="col-md-8"></div>
+			<div class="col-sm-12 col-md-4">
+				<form class="form crush">
+					<div class="form-group">
+						<div class="input-group">
+      						<div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+							<input type="text" class="form-control" data-ng-model="search" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-sm-12">
 				<section class="panel panel-default">
-				<header class="panel-heading">Application Log</header>
-				<div class="panel-body">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Timestamp</th>
-							<th>Level</th>
-							<th>Application</th>
-							<th>Machine</th>
-							<th>Content</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr data-ng-repeat="msg in messages">
-							<td>{{msg.created | date : 'yyyy-MM-dd H:mm:ss:sss'}}</td>
-							<td><level value="{{msg.level}}" /></td>
-							<td>{{msg.app}}</td>
-							<td>{{msg.machine}}</td>
-							<td>{{msg.content}}</td>
-						</tr>
-					</tbody>
-				</table>
-				</div>
+					<header class="panel-heading">Application Log</header>
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Timestamp</th>
+									<th>Level</th>
+									<th>Application</th>
+									<th>Machine</th>
+									<th>Content</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="msg in messages|filter:search">
+									<td>{{msg.created | date : 'yyyy-MM-dd H:mm:ss:sss'}}</td>
+									<td><level value="{{msg.level}}" /></td>
+									<td>{{msg.app}}</td>
+									<td>{{msg.machine}}</td>
+									<td>{{msg.content}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</section>
 			</div>
 		</div>

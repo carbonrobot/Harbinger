@@ -1,17 +1,31 @@
-.content {
-	margin-top: 95px;
-}
-.undecorated-link:hover {
-	text-decoration: none;
-}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
 }
-.ng-invalid.ng-dirty{
-    border-color:#FA787E;
+
+.content {
+	margin-top: 95px;
 }
-.ng-valid.ng-dirty{
-    border-color:#78FA89;
+
+
+.drop {
+    margin-top: 15px;
+}
+.crush {
+    margin-bottom: 15px;
+}
+
+.label-msg-debug, .label-msg-trace {
+  background-color: #777;
+}
+.label-msg-info {
+  background-color: #5bc0de;
+}
+.label-msg-warn {
+  background-color: #f0ad4e;
+}
+.label-msg-error, .label-msg-fatal {
+  background-color: #d9534f;
 }
 
 /* Colorize bucket_admin css */
