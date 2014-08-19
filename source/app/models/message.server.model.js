@@ -29,12 +29,14 @@ var MessageSchema = new Schema({
 	machine: {
 		type: String,
 		default: '',
-		trim: true
+		trim: true,
+		required: 'Machine name cannot be null'
 	},
 	content: {
 		type: String,
 		default: '',
-		trim: true
+		trim: true,
+		required: 'Content cannot be null'
 	}
 });
 

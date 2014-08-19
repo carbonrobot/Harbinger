@@ -8,22 +8,20 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Date</th>
-							<th>Time</th>
+							<th>Timestamp</th>
 							<th>Level</th>
-							<th>Server</th>
 							<th>Application</th>
+							<th>Machine</th>
 							<th>Content</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>2014-08-16</td>
-							<td>21:00</td>
-							<td>ERROR</td>
-							<td>WGORA107</td>
-							<td>Policy Api</td>
-							<td>System.NullReferenceException: The parameter 'name' can not be null.</td>
+						<tr data-ng-repeat="msg in messages">
+							<td>{{msg.created | date : 'yyyy-MM-dd H:mm:ss:sss'}}</td>
+							<td>{{msg.level}}</td>
+							<td>{{msg.app}}</td>
+							<td>{{msg.machine}}</td>
+							<td>{{msg.content}}</td>
 						</tr>
 					</tbody>
 				</table>

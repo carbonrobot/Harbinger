@@ -1,10 +1,6 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
+// main application
 exports.index = function(req, res) {
-	res.render('layout', {
-		user: req.user || null
-	});
+	res.render('layout');
 };
