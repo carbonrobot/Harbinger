@@ -1,13 +1,40 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Messages',
-	function($scope, Messages) {
+angular.module('core').controller('HomeController', ['$scope', 'messageService', 'socketio',
+	function($scope, messageService, socketio) {
 		$scope.messages = [];
 
 		var find = function(){
-			$scope.messages = Messages.query();	
-		};			
+			$scope.messages = messageService.query();	
+		};		
 
-		find();
+/*
+		var addMessage = function(msg){
+			console.log('pushing message!');
+			$scope.messages.push(msg);
+		};
+		*/
+
+		socketio.on('notify', function(msg){
+			console.log('pushing message!');
+			$scope.messages.push(msg);
+		});
+
+		// init
+		(function(){
+
+			// preload the message list
+			find();
+
+/*
+			// watch for new data from the server
+			socketio.on('notify', function(data){
+				console.log('received!');
+				addMessage(data);
+			});
+*/
+
+		})();
+		
 	}
 ]);

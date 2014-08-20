@@ -1,5 +1,6 @@
+'use strict';
+
 angular.module('core').directive('level', function(){
-	
 	return {
 		restrict: 'AE',
 		replace: true,

@@ -1,8 +1,7 @@
 'use strict';
 
-angular.module('core').factory('Messages', ['$resource',
+angular.module('core').factory('messageService', ['$resource',
 	function($resource) {
 		return $resource('messages');
-
 	}
 ]);
