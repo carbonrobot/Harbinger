@@ -34,11 +34,10 @@ server.listen(config.port);
 // enable socket.io communications
 io.listen(server);
 io.on('connect', function(){
-	console.log('client connected');
-	io.on('disconnect', function(){
-		console.log('client dis-connected');
-	});
+	console.log('socket.io-client connected');
 });
+
+app.io = io;
 
 // Expose app
 exports = module.exports = app;

@@ -8,31 +8,20 @@ angular.module('core').controller('HomeController', ['$scope', 'messageService',
 			$scope.messages = messageService.query();	
 		};		
 
-/*
 		var addMessage = function(msg){
-			console.log('pushing message!');
-			$scope.messages.push(msg);
+			$scope.messages.unshift(msg);
 		};
-		*/
-
-		socketio.on('notify', function(msg){
-			console.log('pushing message!');
-			$scope.messages.push(msg);
-		});
-
+		
 		// init
 		(function(){
 
 			// preload the message list
 			find();
 
-/*
 			// watch for new data from the server
 			socketio.on('notify', function(data){
-				console.log('received!');
 				addMessage(data);
 			});
-*/
 
 		})();
 		

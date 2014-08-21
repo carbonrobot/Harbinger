@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-	var collector = require('../../app/controllers/collector');
+	var collector = require('../../app/controllers/collector')(app);
 	
 	// collector routes
 	app.route('/debug').post(collector.debug);
