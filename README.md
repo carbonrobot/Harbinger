@@ -1,7 +1,7 @@
 Harbinger
 =========
 
-Infamous Collector, herald of warnings, bringer of doom.
+Infamous Collector, herald of warnings, bringer of doom. An example of REST based Logging As A Service (LaaS) using Mongo, Express, Angular, and Node (the MEAN stack).
 
 ## Development
 
@@ -20,6 +20,7 @@ Infamous Collector, herald of warnings, bringer of doom.
 - In a separate console window, run an instance of Mongodb
 	- mongod --dbpath c:\\temp\\harbinger-db
 - In the harbinger console window, `npm start` to run the application on port 3000
+- To run without debugging (faster/production), just `node server.js` after `npm build`
 
 ## Usage
 
@@ -31,31 +32,29 @@ Send an HTTP Post to the following endpoints, following the conventions typical 
 
 ```
 POST /debug
-{ "server": "GH823773", "application": "UnicornMaker", "message": "Creating unicorn 3365" }
+{ "machine": "GH823773", "app": "UnicornMaker", "content": "Creating unicorn 3365" }
 
 POST /info
-{ "server": "GH823773", "application": "UnicornMaker", "message": "Creating unicorn 3365" }
+{ "machine": "GH823773", "app": "UnicornMaker", "content": "Creating unicorn 3365" }
 
 POST /warn
-{ "server": "GH823773", "application": "UnicornMaker", "message": "Creating unicorn 3365" }
+{ "machine": "GH823773", "app": "UnicornMaker", "content": "Creating unicorn 3365" }
 
 POST /error
-{ "server": "GH823773", "application": "UnicornMaker", "message": "Creating unicorn 3365", "exception": "Ahhhhh!" }
+{ "machine": "GH823773", "app": "UnicornMaker", "content": "Creating unicorn 3365 Failed Ahhhhh!" }
 
 POST /fatal
-{ "server": "GH823773", "application": "UnicornMaker", "message": "Creating unicorn 3365", "exception": "Run away!" }
+{ "machine": "GH823773", "app": "UnicornMaker", "content": "Creating unicorn 3365 Failed Run away!" }
 
-POST /ANY_CUSTOM_LOGLEVEL_NAME_YOU_WANT
-{ "server": "GH823773", "application": "UnicornMaker", "message": "Creating unicorn 3365", "exception": "I'm a REAL BOY!" }
 ```
 
 #### Reporting
 
 You can navigate to the built in logging page, or grab data from the endpoint.
 
-To use the built in error browser, Open a browser to [http://yourserver/view](http://yourserver/view).
+To use the built in error browser, Open a browser to [http://localhost:3000/](http://localhost:3000/). Errors are reported in realtime and Socket.IO handles the browser updates.
 
-To use the API for retrieving error messages, use the following searchable endpoint.
+To use the API for retrieving error messages, use the following searchable endpoint (coming soon).
 
 ```
 // Finds the log entries for the app named "UnicornMaker". Only returns the last 100 results by default.
