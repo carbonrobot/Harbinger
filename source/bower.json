@@ -1,7 +1,7 @@
 {
-	"name": "meanjs",
-	"version": "0.3.2",
-	"description": "Fullstack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
+	"name": "Harbinger",
+	"version": "0.1.2",
+	"description": "Logging as a Service with MongoDB, Express, AngularJS, and Node.js.",
 	"dependencies": {
 		"bootstrap": "~3",
 		"angular": "~1.2",

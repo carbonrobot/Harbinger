@@ -2,13 +2,11 @@
 
 module.exports = {
 	app: {
-		title: 'Harbinger',
-		description: 'Application logging as a service',
-		keywords: 'app, logging, rest, angular, node, mean, express, mongodb'
+		// app settings
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
-	sessionSecret: 'MEAN',
+	sessionSecret: 'aeikoturksurnudoksmudopmdio',
 	sessionCollection: 'sessions',
 	assets: {
 		lib: {

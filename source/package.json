@@ -1,7 +1,7 @@
 {
   "name": "Harbinger",
-  "description": "Doom, Doom, Doom!",
-  "version": "0.3.2",
+  "description": "Logging as a Service with MongoDB, Express, AngularJS, and Node.js.",
+  "version": "0.1.2",
   "private": false,
   "author": "https://github.com/meanjs/mean/graphs/contributors",
   "repository": {
@@ -36,7 +36,6 @@
     "method-override": "~2.1.2",
     "mongoose": "~3.8.8",
     "morgan": "~1.2.2",
-    "q": "^1.0.1",
     "socket.io": "^1.0.6",
     "socket.io-client": "^1.0.6",
     "swig": "~1.4.1"
