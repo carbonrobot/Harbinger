@@ -105,8 +105,7 @@ module.exports = function(app){
 
 	// Returns a list of messages to the client
 	collector.read = function(req, res){
-		var Message = mongoose.model('Message');
-		Message.find().sort('-created').exec(function(err, msgs){
+		var callback = function(err, msgs){
 			if(err){
 				return res.status(500).send({
 					//message: errorHandler.getErrorMessage(err)
@@ -115,7 +114,46 @@ module.exports = function(app){
 			else{
 				return res.jsonp(msgs);	
 			}
-		});
+		};
+
+		// compose a query
+		var Message = mongoose.model('Message');
+		var query = Message.find();
+		
+		// level is an exact match
+		if(req.query.level){
+			query.where('level').equals(req.query.level.toLowerCase());	
+		}
+
+		// like app
+		if(req.query.app){
+			var re = new RegExp(req.query.app.substr(1), 'i');
+			query.where('app').equals({ $regex: re });
+		}
+
+		// like machine
+		if(req.query.machine){
+			var re = new RegExp(req.query.machine.substr(1), 'i');
+			query.where('machine').equals({ $regex: re });
+		}
+
+		// like content
+		if(req.query.content){
+			var re = new RegExp(req.query.content.substr(1), 'i');
+			query.where('content').equals({ $regex: re });
+		}
+
+		// limit the results
+		if(req.query.limit){
+			query.limit(req.query.limit);
+		}
+		else{
+			query.limit(100);	
+		}
+
+		// always sort by created date desc
+		query.sort('-created')
+		query.exec(callback);
 	};
 
 	return collector;

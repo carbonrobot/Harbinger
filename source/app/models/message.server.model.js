@@ -18,19 +18,22 @@ var MessageSchema = new Schema({
 		type: String,
 		default: '',
 		trim: true,
-		required: 'Level cannot be null'
+		required: 'Level cannot be null',
+		lowercase: true
 	},
 	app: {
 		type: String,
 		default: '',
 		trim: true,
-		required: 'App cannot be null'
+		required: 'App cannot be null',
+		lowercase: true
 	},
 	machine: {
 		type: String,
 		default: '',
 		trim: true,
-		required: 'Machine name cannot be null'
+		required: 'Machine name cannot be null',
+		lowercase: true
 	},
 	content: {
 		type: String,
