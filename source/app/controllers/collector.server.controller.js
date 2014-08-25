@@ -11,87 +11,36 @@ module.exports = function(app){
 
 	var collector = {};
 
-	// handle the message
-	var notify = function(data, fn){
-		var Message = mongoose.model('Message');
+	// Receives a message from a client
+	collector.receive = function(req, res) {
+		
+		// validate the level is configured
+		if(!app.config.ttl[req.params.level]){
+			return res.status(500).send({
+				message: 'Message level "' + req.params.level + '" not configured.'		
+			});		
+		}
 		
 		// build the message for the mon-god
-		var msg = new Message(data.body);
-		msg.level = data.level;
-		msg.expiresAt = moment().add(data.ttl, app.config.ttl.unit).utc();
+		var Message = mongoose.model('Message');
+		var msg = new Message(req.body);
+		msg.level = req.params.level;
+		msg.expiresAt = moment().add(app.config.ttl[req.params.level], app.config.ttl.unit).utc();
 
 		// save the message and callback
-		msg.save(fn);
-	};
+		msg.save(function(err, msg){
+			if (err) {
+				return res.status(500).send({
+					//message: errorHandler.getErrorMessage(err)
+				});
+			}
+			else {
+				// notify socket.io clients
+				app.io.sockets.emit('notify', msg);
 
-	// handle the response
-	var respond = function(err, msg, res){
-		if (err) {
-			return res.status(500).send({
-				//message: errorHandler.getErrorMessage(err)
-			});
-		}
-		else {
-			// notify socket.io clients
-			app.io.sockets.emit('notify', msg);
-
-			// just return 200 SUCCESS
-			return res.status(200).end();
-		}
-	};
-
-	// Receives a message from a client
-	collector.debug = function(req, res) {
-		notify({ 
-			body: req.body, 
-			level: 'debug',
-			ttl: app.config.ttl.debug
-		}, function(err, msg){
-			return respond(err, msg, res);
-		});
-	};
-
-	// Receives a message from a client
-	collector.info = function(req, res) {
-		notify({ 
-			body: req.body, 
-			level: 'info',
-			ttl: app.config.ttl.info
-		}, function(err, msg){
-			return respond(err, msg, res);
-		});
-	};
-
-	// Receives a message from a client
-	collector.warn = function(req, res) {
-		notify({ 
-			body: req.body, 
-			level: 'warn',
-			ttl: app.config.ttl.warn
-		}, function(err, msg){
-			return respond(err, msg, res);
-		});
-	};
-
-	// Receives a message from a client
-	collector.error = function(req, res) {
-		notify({ 
-			body: req.body, 
-			level: 'error',
-			ttl: app.config.ttl.error
-		}, function(err, msg){
-			return respond(err, msg, res);
-		});
-	};
-
-	// Receives a message from a client
-	collector.fatal = function(req, res) {
-		notify({ 
-			body: req.body, 
-			level: 'fatal',
-			ttl: app.config.ttl.fatal
-		}, function(err, msg){
-			return respond(err, msg, res);
+				// just return 200 SUCCESS
+				return res.status(200).end();
+			}
 		});
 	};
 

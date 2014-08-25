@@ -3,13 +3,9 @@
 module.exports = function(app) {
 	var collector = require('../../app/controllers/collector')(app);
 	
-	// collector routes
-	app.route('/debug').post(collector.debug);
-	app.route('/info').post(collector.info);
-	app.route('/warn').post(collector.warn);
-	app.route('/error').post(collector.error);
-	app.route('/fatal').post(collector.fatal);
+	// collector
+	app.route('/:level').post(collector.receive);
 
-	// reporting routes
+	// reporting
 	app.route('/messages').get(collector.read);
 };
