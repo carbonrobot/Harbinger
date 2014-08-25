@@ -29,6 +29,7 @@ module.exports = function(db) {
 	});
 
 	// Setting application local variables
+	app.config = config.app;
 	app.locals.jsFiles = config.getJavaScriptAssets();
 	app.locals.cssFiles = config.getCSSAssets();
 

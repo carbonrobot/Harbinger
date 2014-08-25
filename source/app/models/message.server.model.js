@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+	Schema = mongoose.Schema,
+	util = require('util');
 
 /**
  * Message Schema
@@ -40,6 +41,10 @@ var MessageSchema = new Schema({
 		default: '',
 		trim: true,
 		required: 'Content cannot be null'
+	},
+	expiresAt: {
+		type: Date,
+		expires: 0 // expires when this date is passed
 	}
 });
 

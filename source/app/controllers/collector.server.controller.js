@@ -4,20 +4,12 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	_ = require('lodash');
+	_ = require('lodash'),
+	moment = require('moment');
 
 module.exports = function(app){
 
 	var collector = {};
-
-	// define the message ttl for each level in days
-	var ttl = {
-		debug: 7,
-		info: 7,
-		warn: 14,
-		error: 30,
-		fatal: 90,
-	};
 
 	// handle the message
 	var notify = function(data, fn){
@@ -26,7 +18,7 @@ module.exports = function(app){
 		// build the message for the mon-god
 		var msg = new Message(data.body);
 		msg.level = data.level;
-		// data.ttl
+		msg.expiresAt = moment().add(data.ttl, app.config.ttl.unit).utc();
 
 		// save the message and callback
 		msg.save(fn);
@@ -53,7 +45,7 @@ module.exports = function(app){
 		notify({ 
 			body: req.body, 
 			level: 'debug',
-			ttl: ttl.debug
+			ttl: app.config.ttl.debug
 		}, function(err, msg){
 			return respond(err, msg, res);
 		});
@@ -64,7 +56,7 @@ module.exports = function(app){
 		notify({ 
 			body: req.body, 
 			level: 'info',
-			ttl: ttl.info
+			ttl: app.config.ttl.info
 		}, function(err, msg){
 			return respond(err, msg, res);
 		});
@@ -75,7 +67,7 @@ module.exports = function(app){
 		notify({ 
 			body: req.body, 
 			level: 'warn',
-			ttl: ttl.warn
+			ttl: app.config.ttl.warn
 		}, function(err, msg){
 			return respond(err, msg, res);
 		});
@@ -86,7 +78,7 @@ module.exports = function(app){
 		notify({ 
 			body: req.body, 
 			level: 'error',
-			ttl: ttl.error
+			ttl: app.config.ttl.error
 		}, function(err, msg){
 			return respond(err, msg, res);
 		});
@@ -97,7 +89,7 @@ module.exports = function(app){
 		notify({ 
 			body: req.body, 
 			level: 'fatal',
-			ttl: ttl.fatal
+			ttl: app.config.ttl.fatal
 		}, function(err, msg){
 			return respond(err, msg, res);
 		});
@@ -131,6 +123,11 @@ module.exports = function(app){
 		if(req.query.content){
 			var re = new RegExp(req.query.content.substr(1), 'i');
 			query.where('content').equals({ $regex: re });
+		}
+
+		// skip results for paging
+		if(req.query.skip){
+			query.skip(req.query.skip);
 		}
 
 		// limit the results

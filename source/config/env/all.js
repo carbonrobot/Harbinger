@@ -2,7 +2,15 @@
 
 module.exports = {
 	app: {
-		// app settings
+		// define the message ttl for each level in days
+		ttl: {
+			debug: 7,
+			info: 7,
+			warn: 14,
+			error: 30,
+			fatal: 90,
+			unit: 'days'
+		}
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
