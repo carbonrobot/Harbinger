@@ -105,16 +105,6 @@ module.exports = function(app){
 
 	// Returns a list of messages to the client
 	collector.read = function(req, res){
-		var callback = function(err, msgs){
-			if(err){
-				return res.status(500).send({
-					//message: errorHandler.getErrorMessage(err)
-				});
-			}
-			else{
-				return res.jsonp(msgs);	
-			}
-		};
 
 		// compose a query
 		var Message = mongoose.model('Message');
@@ -153,7 +143,16 @@ module.exports = function(app){
 
 		// always sort by created date desc
 		query.sort('-created')
-		query.exec(callback);
+		query.exec(function(err, msgs){
+			if(err){
+				return res.status(500).send({
+					//message: errorHandler.getErrorMessage(err)
+				});
+			}
+			else{
+				return res.jsonp(msgs);	
+			}
+		});
 	};
 
 	return collector;
