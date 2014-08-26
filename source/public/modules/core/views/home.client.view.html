@@ -3,7 +3,7 @@
 	<header class="navbar navbar-default-white navbar-fixed-top" role="navigation">
  		<div class="navbar-header">
 			<div class="brand">
-				<a href="index.html" class="logo">
+				<a href="/" class="logo">
 	                <img src="modules/core/img/brand/logo.png" alt="">
 	            </a>
 	        </div>
@@ -39,7 +39,7 @@
 								<tr data-ng-repeat="msg in messages|filter:search">
 									<td>{{msg.created | date : 'yyyy-MM-dd H:mm:ss:sss'}}</td>
 									<td><level value="{{msg.level}}" /></td>
-									<td>{{msg.app}}</td>
+									<td><a href="#!/app/{{msg.app}}">{{msg.app}}</a></td>
 									<td>{{msg.machine}}</td>
 									<td>{{msg.content}}</td>
 								</tr>
