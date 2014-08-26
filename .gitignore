@@ -3,9 +3,7 @@
 .sass-cache/
 npm-debug.log
 source/node_modules/
-source/public/lib/angular*
-source/public/lib/bootstrap
-source/public/lib/jquery
+source/public/lib/*
 source/app/tests/coverage/
 *.sublime-*
 *.csproj

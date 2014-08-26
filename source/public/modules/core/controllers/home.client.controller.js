@@ -3,9 +3,10 @@
 angular.module('core').controller('HomeController', ['$scope', 'messageService', 'socketio',
 	function($scope, messageService, socketio) {
 		$scope.messages = [];
-
-		var find = function(){
-			$scope.messages = messageService.query();	
+		$scope.load = function _load(){
+			messageService.query({skip: $scope.messages.length, limit: 100}, function(data){
+				$scope.messages.push.apply($scope.messages, data);
+			});	
 		};		
 
 		var addMessage = function(msg){
@@ -16,7 +17,7 @@ angular.module('core').controller('HomeController', ['$scope', 'messageService',
 		(function(){
 
 			// preload the message list
-			find();
+			$scope.load();
 
 			// watch for new data from the server
 			socketio.on('notify', function(data){
