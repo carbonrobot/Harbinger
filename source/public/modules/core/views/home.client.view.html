@@ -8,16 +8,24 @@
 	            </a>
 	        </div>
 		</div>
-	 	<div class="container-fluid">
-	 		<form class="navbar-form pull-right">
-				<div class="form-group">
-					<div class="input-group">
-  						<div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-						<input type="text" class="form-control" data-ng-model="search" />
+
+		<div class="container-fluid">
+	        	<div class="navbar-filter pull-left" data-ng-show="app">
+	        		<ol class="breadcrumb">
+        				<li><a href="/">App</a></li>
+        				<li>{{app}}</li>
+	        		</ol>
+	        	</div>
+		 		
+		 		<form class="navbar-form pull-right">
+					<div class="form-group">
+						<div class="input-group">
+	  						<div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+							<input type="text" class="form-control" data-ng-model="search" />
+						</div>
 					</div>
-				</div>
-			</form>
-	 	</div>
+				</form>
+	 		</div>
  	</header>
 
 	<div class="container-fluid">
